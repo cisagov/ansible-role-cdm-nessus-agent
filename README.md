@@ -4,16 +4,10 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-venom-nessus-agent.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-venom-nessus-agent/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-venom-nessus-agent.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-venom-nessus-agent/context:python)
 
-This is a skeleton project that can be used to quickly get a new
-[cisagov](https://github.com/cisagov) Ansible role GitHub project
-started, where that Ansible role requires an AWS test user for
-automated testing.
-
-This skeleton project contains [licensing information](LICENSE), as
-well as [pre-commit hooks](https://pre-commit.com) and [GitHub
-Actions](https://github.com/features/actions) configurations
-appropriate for an Ansible role, as well as the Terraform code to
-create the AWS test user.
+This is an Ansible role for installing [Nessus
+Agent](https://www.tenable.com/products/nessus/nessus-agents),
+specifically for the CISA Virtual Enterprise Network Operations
+Manager (VENOM) environment.
 
 ## Pre-requisites ##
 
@@ -67,11 +61,15 @@ None.
 
 ## Role Variables ##
 
-None.
+* `install_directory` - the directory where Nessus Agent is installed.
+  Defaults to "/opt/nessus_agent".
+* `third_party_bucket_name` - the name of the AWS S3 bucket where
+  third-party software is located.  Defaults to
+  "cisa-cool-third-party-production".
 
 ## Dependencies ##
 
-None.
+* [cisagov/ansible-role-venom-certificates](https://github.com/cisagov/ansible-role-venom-certificates)
 
 ## Example Playbook ##
 
@@ -82,15 +80,8 @@ Here's how to use it in a playbook:
   become: yes
   become_method: sudo
   roles:
-    - skeleton
+    - venom_nessus_agent
 ```
-
-## New Repositories from a Skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
 
 ## Contributing ##
 
@@ -112,4 +103,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-First Last - <first.last@trio.dhs.gov>
+Shane Frasier - <jeremy.frasier@trio.dhs.gov>
