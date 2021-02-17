@@ -1,10 +1,12 @@
 ---
 galaxy_info:
-  author: First Last
-  description: Skeleton Ansible role with test user
+  author: Shane Frasier
+  description: Install Nessus Agent for CISA VENOM
   company: CISA Cyber Assessments
   galaxy_tags:
-    - skeleton
+    - nessus
+    - venom
+    - cisa
   license: CC0
   # With the release of version 2.10, Ansible finally correctly
   # identifies Kali Linux as being the Kali distribution of the Debian
@@ -33,6 +35,8 @@ galaxy_info:
         - xenial
         - bionic
         - focal
-  role_name: skeleton_with_test_user
+  role_name: venom_nessus
 
-dependencies: []
+dependencies:
+  - src: https://github.com/cisagov/ansible-role-venom-certificates
+    name: venom_certificates

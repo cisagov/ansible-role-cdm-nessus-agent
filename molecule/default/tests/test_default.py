@@ -4,7 +4,7 @@
 import os
 
 # Third-Party Libraries
-import pytest
+# import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -12,7 +12,16 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts("all")
 
 
-@pytest.mark.parametrize("x", [True])
-def test_packages(host, x):
-    """Run a dummy test, just to show what one would look like."""
-    assert x
+def test_nessus_agent_installed(host):
+    """Test that Nessus Agent was installed."""
+    dir_full_path = "/opt/nessus_agent"
+    directory = host.file(dir_full_path)
+    assert directory.exists
+    assert directory.is_directory
+    # Make sure that the directory is not empty
+    assert host.run_expect([0], f'[ -n "$(ls -A {dir_full_path})" ]')
+
+
+def test_nessus_agent_enabled(host):
+    """Test that Nessus Agent is enabled."""
+    assert host.service("nessusagent").is_enabled
