@@ -1,2 +1,64 @@
 ---
-# tasks file for skeleton
+- name: Load var file with package names based on the OS type
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+# Check if Nessus Agent is already installed
+- name: Check if Nessus Agent is already installed
+  ansible.builtin.stat:
+    path: "{{ install_directory }}"
+  register: nessus_directory
+
+- name: Install Nessus Agent
+  block:
+    - name: Grab Nessus Agent  system package from S3
+      ansible.builtin.aws_s3:
+        bucket: "{{ third_party_bucket_name }}"
+        object: "{{ package_object_name }}"
+        dest: /tmp/{{ package_object_name }}
+        mode: get
+      become: no
+      delegate_to: localhost
+
+    - name: Copy the Nessus Agent system package
+      ansible.builtin.copy:
+        dest: /tmp/{{ package_object_name }}
+        mode: 0700
+        src: /tmp/{{ package_object_name }}
+
+    - name: Load tasks file based on the OS type
+      ansible.builtin.include_tasks: "{{ lookup('first_found', params) }}"
+      vars:
+        params:
+          files:
+            - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+            - "{{ ansible_distribution }}.yml"
+            - "{{ ansible_os_family }}.yml"
+          paths:
+            - "{{ role_path }}/tasks"
+
+    - name: Delete local copy of Nessus Agent system package
+      ansible.builtin.file:
+        path: /tmp/{{ package_object_name }}
+        state: absent
+      become: no
+      delegate_to: localhost
+
+    - name: Delete remote copy of Nessus Agent system package
+      ansible.builtin.file:
+        path: /tmp/{{ package_object_name }}
+        state: absent
+
+  when: not nessus_directory.stat.exists
+
+- name: Enable the Nessus Agent service
+  ansible.builtin.service:
+    enabled: yes
+    name: nessusagent
