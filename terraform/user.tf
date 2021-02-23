@@ -1,22 +1,19 @@
-# Create the test user
+# Create the test user.  We do not require SSM Parameter Store access
+# for this role, so we can simply use cisagov/ci-iam-user-tf-module
+# instead of cisagov/molecule-iam-user-tf-module.
 module "user" {
-  source = "github.com/cisagov/molecule-iam-user-tf-module"
+  source = "github.com/cisagov/ci-iam-user-tf-module"
 
   providers = {
-    aws                                    = aws.users
-    aws.images-production-provisionaccount = aws.images_production_provisionaccount
-    aws.images-staging-provisionaccount    = aws.images_staging_provisionaccount
-    aws.images-production-ssm              = aws.images_production_ssm
-    aws.images-staging-ssm                 = aws.images_staging_ssm
+    aws            = aws.users
+    aws.production = aws.images_production_provisionaccount
+    aws.staging    = aws.images_staging_provisionaccount
   }
 
-  entity = "ansible-role-venom-nessus-agent"
-  # The TF module will error if we don't put at least one value here.
-  # This build user does not need to access any SSM parameters, so we
-  # just place a dummy value here.
-  ssm_parameters = ["/dummy/value"]
-
-  tags = var.tags
+  role_description = "A role that can be assumed to allow for CI testing of ansible-role-venom-nessus-agent via Molecule."
+  role_name        = "Test-ansible-role-venom-nessus-agent"
+  tags             = var.tags
+  user_name        = "test-ansible-role-venom-nessus-agent"
 }
 
 # Attach third-party S3 bucket read-only policy to the production
