@@ -1,0 +1,4 @@
+---
+# The name of the S3 object corresponding to the Nessus Agent system
+# package
+package_object_name: NessusAgent-8.2.2-amzn.x86_64.rpm
