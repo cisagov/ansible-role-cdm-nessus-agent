@@ -37,5 +37,7 @@ galaxy_info:
   role_name: venom_nessus
 
 dependencies:
+  - src: https://github.com/cisagov/ansible-role-dhs-certificates
+    name: dhs_certificates
   - src: https://github.com/cisagov/ansible-role-venom-certificates
     name: venom_certificates
