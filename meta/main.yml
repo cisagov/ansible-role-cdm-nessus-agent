@@ -1,11 +1,11 @@
 ---
 galaxy_info:
   author: Shane Frasier
-  description: Install Nessus Agent for CISA VENOM
+  description: Install Nessus Agent for CISA CDM
   company: CISA Cyber Assessments
   galaxy_tags:
     - nessus
-    - venom
+    - cdm
     - cisa
   license: CC0
   # With the release of version 2.10, Ansible finally correctly
@@ -34,10 +34,10 @@ galaxy_info:
       versions:
         - bionic
         - focal
-  role_name: venom_nessus
+  role_name: cdm_nessus
 
 dependencies:
   - src: https://github.com/cisagov/ansible-role-dhs-certificates
     name: dhs_certificates
-  - src: https://github.com/cisagov/ansible-role-venom-certificates
-    name: venom_certificates
+  - src: https://github.com/cisagov/ansible-role-cdm-certificates
+    name: cdm_certificates
