@@ -46,6 +46,6 @@ variable "tags" {
 
   default = {
     Team        = "VM Fusion - Development"
-    Application = "ansible-role-venom-nessus-agent testing"
+    Application = "ansible-role-cdm-nessus-agent testing"
   }
 }
