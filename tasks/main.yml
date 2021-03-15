@@ -62,3 +62,16 @@
   ansible.builtin.service:
     enabled: yes
     name: nessusagent
+
+- name: Link the Nessus Agent to the CDM Nessus server
+  ansible.builtin.command:
+    argv:
+      - /opt/nessus_agent/sbin/nessuscli
+      - agent
+      - link
+      - --key={{ key }}
+      - --host={{ hostname }}
+      - --port={{ port }}
+      - --groups={{ nessus_groups }}
+      - --offline-install
+    creates: /opt/nessus_agent/var/nessus/master.key
