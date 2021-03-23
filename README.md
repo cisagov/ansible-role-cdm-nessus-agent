@@ -61,15 +61,8 @@ None.
 
 ## Role Variables ##
 
-* `host` - the hostname or IP of the Nessus server.  Required.
 * `install_directory` - the directory where Nessus Agent is installed.
   Defaults to "/opt/nessus_agent".
-* `key` - the secret key used to link the Nessus agent to the Nessus
-  server.  Required.
-* `nessus_groups` - a comma-delimited list of groups to which the host
-  running the Nessus agent should belong.  Required.
-* `port` - the port on which the Nessus server is listening for agent
-  connections.  Required.
 * `third_party_bucket_name` - the name of the AWS S3 bucket where
   third-party software is located.  Defaults to
   "cisa-cool-third-party-production".
