@@ -62,6 +62,19 @@
   ansible.builtin.service:
     enabled: yes
     name: nessusagent
+    # Required to set the update_hostname option below
+    state: started
+
+- name: Configure the Nessus Agent to send hostname updates
+  ansible.builtin.command:
+    argv:
+      - "{{ install_directory }}/sbin/nessuscli"
+      - fix
+      - --set
+      - update_hostname=yes
+  tags:
+    # There is really no way to make this idempotent
+    - molecule-idempotence-notest
 
 - name: Link the Nessus Agent to the CDM Nessus server
   ansible.builtin.command:
