@@ -3,8 +3,3 @@
   hosts: all
   roles:
     - role: ansible-role-cdm-nessus-agent
-      vars:
-        hostname: nessus.example.com
-        key: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
-        nessus_groups: good,bad,ugly
-        port: 8080

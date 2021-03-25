@@ -22,22 +22,20 @@ def test_nessus_agent_installed(host):
     assert host.run_expect([0], f'[ -n "$(ls -A {dir_full_path})" ]')
 
 
-def test_nessus_agent_enabled(host):
-    """Test that Nessus Agent is enabled."""
-    assert host.service("nessusagent").is_enabled
+def test_nessus_agent_enabled_and_started(host):
+    """Test that Nessus Agent is enabled and started."""
+    svc = host.service("nessusagent")
+    assert svc.is_enabled and svc.is_running
 
 
 @pytest.mark.parametrize(
     "key, value",
     [
-        ("groups", "good,bad,ugly"),
-        ("key", "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"),
-        ("ms_server_ip", "nessus.example.com"),
-        ("ms_server_port", "8080"),
+        ("update_hostname", "yes"),
     ],
 )
 def test_nessus_config(host, key, value):
-    """Test that Nessus Agent is configured."""
+    """Test that Nessus Agent non-secure configuration options are as expected."""
     assert value in host.check_output(
-        f"/opt/nessus_agent/sbin/nessuscli fix --secure --get {key}"
+        f"/opt/nessus_agent/sbin/nessuscli fix --get {key}"
     )

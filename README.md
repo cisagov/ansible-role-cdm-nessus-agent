@@ -9,6 +9,21 @@ Agent](https://www.tenable.com/products/nessus/nessus-agents),
 specifically for the CISA Continuous Diagnostics and Mitigation (CDM)
 environment.
 
+Note that the command to link the Nessus Agent to the Tenable/Nessus
+server (`nessuscli agent link`) _is not_ run by this Ansible role.  It
+must be run at instance startup via
+[`cloud-init`](https://cloud-init.io/) or a separate Ansible playbook.
+The reason for this is that this Ansible role is used to build AWS
+AMIs, and the linking command generates the Tenable tag _even if run
+with the `--offline-install` option_.  This causes all instances
+generates from that AMI to have the same Tenable tag, and the Tenable
+server cannot handle such duplicate agents.
+
+I would prefer to perform all configuration at AMI build time; but,
+unless Nessus modifies their code to, for example, allow one to
+specify the linking parameters ahead of time we are stuck with this
+substandard solution.
+
 ## Pre-requisites ##
 
 In order to execute the Molecule tests for this Ansible role in GitHub
@@ -61,15 +76,8 @@ None.
 
 ## Role Variables ##
 
-* `host` - the hostname or IP of the Nessus server.  Required.
 * `install_directory` - the directory where Nessus Agent is installed.
   Defaults to "/opt/nessus_agent".
-* `key` - the secret key used to link the Nessus agent to the Nessus
-  server.  Required.
-* `nessus_groups` - a comma-delimited list of groups to which the host
-  running the Nessus agent should belong.  Required.
-* `port` - the port on which the Nessus server is listening for agent
-  connections.  Required.
 * `third_party_bucket_name` - the name of the AWS S3 bucket where
   third-party software is located.  Defaults to
   "cisa-cool-third-party-production".
