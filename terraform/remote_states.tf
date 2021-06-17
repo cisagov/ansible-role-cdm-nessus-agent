@@ -45,8 +45,6 @@ data "terraform_remote_state" "ansible_role_cdm_certificates" {
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
   }
-
-  workspace = "staging"
 }
 
 data "terraform_remote_state" "users" {
