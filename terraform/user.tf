@@ -12,7 +12,6 @@ module "user" {
 
   role_description = "A role that can be assumed to allow for CI testing of ansible-role-cdm-nessus-agent via Molecule."
   role_name        = "Test-ansible-role-cdm-nessus-agent"
-  tags             = var.tags
   user_name        = "test-ansible-role-cdm-nessus-agent"
 }
 
