@@ -36,7 +36,7 @@ local machine.
 Before the build user can be created, the following profile must exist in
 your AWS credentials file:
 
-* `cool-terraform-backend`
+- `cool-terraform-backend`
 
 The easiest way to set up that profile is to use our
 [`aws-profile-sync`](https://github.com/cisagov/aws-profile-sync)
@@ -76,16 +76,16 @@ None.
 
 ## Role Variables ##
 
-* `install_directory` - the directory where Nessus Agent is installed.
+- `install_directory` - the directory where Nessus Agent is installed.
   Defaults to "/opt/nessus_agent".
-* `third_party_bucket_name` - the name of the AWS S3 bucket where
+- `third_party_bucket_name` - the name of the AWS S3 bucket where
   third-party software is located.  Defaults to
   "cisa-cool-third-party-production".
 
 ## Dependencies ##
 
-* [cisagov/ansible-role-dhs-certificates](https://github.com/cisagov/ansible-role-dhs-certificates)
-* [cisagov/ansible-role-cdm-certificates](https://github.com/cisagov/ansible-role-cdm-certificates)
+- [cisagov/ansible-role-dhs-certificates](https://github.com/cisagov/ansible-role-dhs-certificates)
+- [cisagov/ansible-role-cdm-certificates](https://github.com/cisagov/ansible-role-cdm-certificates)
 
 ## Example Playbook ##
 
