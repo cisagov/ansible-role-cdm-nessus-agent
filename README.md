@@ -79,18 +79,10 @@ None.
 
 ## Role Variables ##
 
-- `install_directory` - the directory where Nessus Agent is installed.
-  Defaults to "/opt/nessus_agent".
-- `third_party_bucket_name` - the name of the AWS S3 bucket where
-  third-party software is located.  Defaults to
-  "cisa-cool-third-party-production".
-
-<!--
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| optional_variable | Describe its purpose. | `default_value` | No |
-| required_variable | Describe its purpose. | n/a | Yes |
--->
+| install_directory | The directory where Nessus Agent is installed. | `/opt/nessus_agent` | No |
+| third_party_bucket_name | The name of the AWS S3 bucket where third-party software is located. | `cisa-cool-third-party-production` | No |
 
 ## Dependencies ##
 
