@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-role-cdm-nessus-agent
+  tasks:
+    - name: Include ansible-role-cdm-nessus-agent
+      ansible.builtin.include_role:
+        name: ansible-role-cdm-nessus-agent
