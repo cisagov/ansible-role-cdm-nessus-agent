@@ -58,6 +58,8 @@
           - fix
           - --set
           - update_hostname=yes
+      changed_when: nessuscli_output.rc == 0
+      register: nessuscli_output
 
     - name: Delete local copy of Nessus Agent system package
       ansible.builtin.file:
