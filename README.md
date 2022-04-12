@@ -10,12 +10,12 @@ specifically for the CISA Continuous Diagnostics and Mitigation (CDM)
 environment.
 
 Note that the command to link the Nessus Agent to the Tenable/Nessus
-server (`nessuscli agent link`) _is not_ run by this Ansible role.  It
+server (`nessuscli agent link`) *is not* run by this Ansible role.  It
 must be run at instance startup via
 [`cloud-init`](https://cloud-init.io/) or a separate Ansible playbook.
 The reason for this is that this Ansible role is used to build AWS
-AMIs, and the linking command generates the Tenable tag _even if run
-with the `--offline-install` option_.  This causes all instances
+AMIs, and the linking command generates the Tenable tag *even if run
+with the `--offline-install` option*.  This causes all instances
 generates from that AMI to have the same Tenable tag, and the Tenable
 server cannot handle such duplicate agents.
 
