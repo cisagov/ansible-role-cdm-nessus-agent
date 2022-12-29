@@ -3,11 +3,5 @@
   name: cdm_certificates
 - src: https://github.com/cisagov/ansible-role-dhs-certificates
   name: dhs_certificates
-- src: https://github.com/cisagov/ansible-role-pip
-  name: pip
-- src: https://github.com/cisagov/ansible-role-python
-  name: python
-- src: https://github.com/cisagov/ansible-role-remove-python2
-  name: remove_python2
 - src: https://github.com/cisagov/ansible-role-upgrade
   name: upgrade
