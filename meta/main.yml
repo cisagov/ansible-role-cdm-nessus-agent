@@ -1,8 +1,18 @@
 ---
+dependencies:
+  - src: https://github.com/cisagov/ansible-role-dhs-certificates
+    name: dhs_certificates
+  # Note that the value of third_party_bucket_name used for this
+  # Ansible role will trickle down to this dependent role.  For
+  # details, see the last paragraph of this section of the Ansible
+  # documentation:
+  # https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
+  - src: https://github.com/cisagov/ansible-role-cdm-certificates
+    name: cdm_certificates
 galaxy_info:
   author: Shane Frasier
-  description: Install Nessus Agent for CISA CDM
   company: CISA Cyber Assessments
+  description: Install Nessus Agent for CISA CDM
   galaxy_tags:
     - nessus
     - cdm
@@ -30,7 +40,6 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - "35"
         - "36"
         - "37"
     - name: Ubuntu
@@ -39,14 +48,3 @@ galaxy_info:
         - focal
         - jammy
   role_name: cdm_nessus
-
-dependencies:
-  - src: https://github.com/cisagov/ansible-role-dhs-certificates
-    name: dhs_certificates
-  # Note that the value of third_party_bucket_name used for this
-  # Ansible role will trickle down to this dependent role.  For
-  # details, see the last paragraph of this section of the Ansible
-  # documentation:
-  # https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
-  - src: https://github.com/cisagov/ansible-role-cdm-certificates
-    name: cdm_certificates
