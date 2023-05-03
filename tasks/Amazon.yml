@@ -1,5 +1,0 @@
----
-- name: Install Nessus Agent (Amazon Linux)
-  ansible.builtin.yum:
-    name:
-      - /tmp/{{ package_object_name }}
