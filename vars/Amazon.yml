@@ -1,8 +1,0 @@
----
-# The name of the S3 object corresponding to the GPG key for the
-# Nessus Agent system package
-package_gpg_key_object_name: RPM-GPG-KEY-Tenable-2048
-
-# The name of the S3 object corresponding to the Nessus Agent system
-# package
-package_object_name: NessusAgent-8.2.2-amzn.x86_64.rpm
