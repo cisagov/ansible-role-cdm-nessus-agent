@@ -13,14 +13,14 @@
 # Check if Nessus Agent is already installed
 - name: Check if Nessus Agent is already installed
   ansible.builtin.stat:
-    path: "{{ install_directory }}"
+    path: "{{ cdm_nessus_agent_install_directory }}"
   register: nessus_directory
 
 - name: Install Nessus Agent
   block:
     - name: Grab Nessus Agent system package from S3
       amazon.aws.aws_s3:
-        bucket: "{{ third_party_bucket_name }}"
+        bucket: "{{ cdm_nessus_agent_third_party_bucket_name }}"
         object: "{{ package_object_name }}"
         dest: /tmp/{{ package_object_name }}
         mode: get
@@ -54,7 +54,7 @@
     - name: Configure the Nessus Agent to send hostname updates
       ansible.builtin.command:
         argv:
-          - "{{ install_directory }}/sbin/nessuscli"
+          - "{{ cdm_nessus_agent_install_directory }}/sbin/nessuscli"
           - fix
           - --set
           - update_hostname=yes

@@ -80,8 +80,8 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| install_directory | The directory where Nessus Agent is installed. | `/opt/nessus_agent` | No |
-| third_party_bucket_name | The name of the AWS S3 bucket where third-party software is located. | `cisa-cool-third-party-production` | No |
+| cdm_nessus_agent_install_directory | The directory where Nessus Agent is installed. | `/opt/nessus_agent` | No |
+| cdm_nessus_agent_third_party_bucket_name | The name of the AWS S3 bucket where third-party software is located. | `cisa-cool-third-party-production` | No |
 
 ## Dependencies ##
 
