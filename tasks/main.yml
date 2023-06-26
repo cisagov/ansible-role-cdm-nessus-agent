@@ -1,4 +1,10 @@
 ---
+- name: Install CDM certificates
+  ansible.builtin.include_role:
+    name: cdm_certificates
+  vars:
+    cdm_certificates_third_party_bucket_name: "{{ cdm_nessus_agent_third_party_bucket_name }}"
+
 - name: Load var file with package names based on the OS type
   ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
