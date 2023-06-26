@@ -27,9 +27,9 @@ galaxy_info:
   namespace: cisagov
   platforms:
     # We do not have an installer for Amazon Linux 2023.
-    # - name: Amazon Linux 2023
+    # - name: Amazon Linux
     #   versions:
-    #     - any
+    #     - "2023"
     - name: Debian
       versions:
         - buster
@@ -37,14 +37,13 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - "36"
         - "37"
+        - "38"
     - name: Kali
       versions:
         - "2023"
     - name: Ubuntu
       versions:
-        - bionic
         - focal
         - jammy
   role_name: cdm_nessus
