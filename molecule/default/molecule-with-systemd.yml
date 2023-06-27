@@ -65,15 +65,17 @@ platforms:
     privileged: yes
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: geerlingguy/docker-fedora38-ansible:latest
-    name: fedora38-systemd
-    platform: amd64
-    pre_build_image: yes
-    privileged: yes
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # The GPG key we have for the Nessus Agent RPM is not accepted by
+  # Fedora 38.
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: geerlingguy/docker-fedora38-ansible:latest
+  #   name: fedora38-systemd
+  #   platform: amd64
+  #   pre_build_image: yes
+  #   privileged: yes
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: geerlingguy/docker-ubuntu2004-ansible:latest

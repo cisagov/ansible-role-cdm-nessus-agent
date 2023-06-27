@@ -19,7 +19,7 @@ galaxy_info:
   min_ansible_version: "2.10"
   namespace: cisagov
   platforms:
-    # We do not have an installer for Amazon Linux 2023.
+    # We do not have a system package for Amazon Linux 2023.
     # - name: Amazon Linux
     #   versions:
     #     - "2023"
@@ -31,7 +31,9 @@ galaxy_info:
     - name: Fedora
       versions:
         - "37"
-        - "38"
+        # The GPG key we have for the Nessus Agent RPM is not accepted
+        # by Fedora 38.
+        # - "38"
     - name: Kali
       versions:
         - "2023"
