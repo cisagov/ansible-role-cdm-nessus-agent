@@ -1,7 +1,6 @@
 ---
 - name: cdm_certificates
   src: https://github.com/cisagov/ansible-role-cdm-certificates
-  version: lineage/skeleton
 - name: dhs_certificates
   src: https://github.com/cisagov/ansible-role-dhs-certificates
 - name: upgrade
