@@ -1,7 +1,7 @@
 ---
-- src: https://github.com/cisagov/ansible-role-cdm-certificates
-  name: cdm_certificates
-- src: https://github.com/cisagov/ansible-role-dhs-certificates
-  name: dhs_certificates
-- src: https://github.com/cisagov/ansible-role-upgrade
-  name: upgrade
+- name: cdm_certificates
+  src: https://github.com/cisagov/ansible-role-cdm-certificates
+- name: dhs_certificates
+  src: https://github.com/cisagov/ansible-role-dhs-certificates
+- name: upgrade
+  src: https://github.com/cisagov/ansible-role-upgrade
