@@ -41,4 +41,4 @@ galaxy_info:
       versions:
         - focal
         - jammy
-  role_name: cdm_nessus
+  role_name: cdm_nessus_agent
