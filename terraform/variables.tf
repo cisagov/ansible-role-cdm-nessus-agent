@@ -21,7 +21,7 @@ variable "production_objects" {
   description = "The Nessus Agent system package objects inside the production bucket."
   default = [
     "NessusAgent-*",
-    "RPM-GPG-KEY-Tenable-2048",
+    "RPM-GPG-KEY-Tenable-*",
   ]
 }
 
@@ -36,7 +36,7 @@ variable "staging_objects" {
   description = "The Nessus Agent system packages inside the staging bucket."
   default = [
     "NessusAgent-*",
-    "RPM-GPG-KEY-Tenable-2048",
+    "RPM-GPG-KEY-Tenable-*",
   ]
 }
 
