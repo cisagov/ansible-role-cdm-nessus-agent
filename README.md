@@ -94,7 +94,7 @@ Here's how to use it in a playbook:
 
 ```yaml
 - hosts: all
-  become: yes
+  become: true
   become_method: sudo
   tasks:
     - name: Install Nessus Agent for CDM
