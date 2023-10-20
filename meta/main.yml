@@ -1,7 +1,12 @@
 ---
+# Note that dependencies listed here are automatically installed
+# before this role.  Role variables for any roles listed here can be
+# assigned static variables.
+#
+# See also cisagov/skeleton-ansible-role#153.
 dependencies:
-  - src: https://github.com/cisagov/ansible-role-dhs-certificates
-    name: dhs_certificates
+  - name: dhs_certificates
+    src: https://github.com/cisagov/ansible-role-dhs-certificates
 galaxy_info:
   author: Shane Frasier
   company: CISA Cyber Assessments
@@ -40,3 +45,4 @@ galaxy_info:
         - focal
         - jammy
   role_name: cdm_nessus_agent
+  standalone: true
