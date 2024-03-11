@@ -1,4 +1,4 @@
 ---
 # The name of the S3 object corresponding to the Nessus Agent system
 # package
-package_object_name: NessusAgent-10.4.2-ubuntu1404_amd64.deb
+package_object_name: NessusAgent-10.5.1-ubuntu1404_amd64.deb
