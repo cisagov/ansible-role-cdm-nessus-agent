@@ -5,4 +5,4 @@ package_gpg_key_object_name: RPM-GPG-KEY-Tenable-4096
 
 # The name of the S3 object corresponding to the Nessus Agent system
 # package
-package_object_name: NessusAgent-10.4.2-fc34.x86_64.rpm
+package_object_name: NessusAgent-10.5.1-fc38.x86_64.rpm
