@@ -100,8 +100,8 @@ where `requirements.yml` looks like:
 
 ```yaml
 ---
-- name: skeleton
-  src: https://github.com/cisagov/skeleton-ansible-role-with-test-user
+- name: cdm_nessus_agent
+  src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
 ```
 
 and may contain other roles as well.
