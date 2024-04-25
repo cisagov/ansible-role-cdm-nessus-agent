@@ -31,7 +31,7 @@
         object: "{{ package_object_name }}"
         dest: /tmp/{{ package_object_name }}
         mode: get
-      become: no
+      become: false
       delegate_to: localhost
 
     - name: Copy the Nessus Agent system package
@@ -53,7 +53,7 @@
 
     - name: Enable the Nessus Agent service
       ansible.builtin.service:
-        enabled: yes
+        enabled: true
         name: nessusagent
         # Required to set the update_hostname option below
         state: started
@@ -73,7 +73,7 @@
       ansible.builtin.file:
         path: /tmp/{{ package_object_name }}
         state: absent
-      become: no
+      become: false
       delegate_to: localhost
 
     - name: Delete remote copy of Nessus Agent system package
