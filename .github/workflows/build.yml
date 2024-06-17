@@ -181,6 +181,23 @@ jobs:
         architecture:
           - amd64
           - arm64
+        exclude:
+          # Nessus Agent does not support ARM64 on Debian.
+          - architecture: arm64
+            platform: debian10-systemd
+          - architecture: arm64
+            platform: debian11-systemd
+          - architecture: arm64
+            platform: debian12-systemd
+          - architecture: arm64
+            platform: debian13-systemd
+          - architecture: arm64
+            platform: kali-systemd
+          # Nessus Agent does not support ARM64 on Fedora.
+          - architecture: arm64
+            platform: fedora39-systemd
+          - architecture: arm64
+            platform: fedora40-systemd
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
