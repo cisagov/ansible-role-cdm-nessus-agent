@@ -1,0 +1,16 @@
+---
+# A dictionary whose keys are values of the Ansible fact
+# ansible_architecture and whose values are processor architecture for
+# which Nessus is to be installed, as specified in the Nessus package
+# filename
+architectures:
+  aarch64: aarch64
+  x86_64: amd64
+
+# The format/file extension of the Nessus package file (e.g. deb, rpm)
+format: deb
+
+# A regex that will match the name of the Nessus Agent package file
+# that should be installed.  Note that we force the use of the Debian
+# packages for Kali, since it is based on Debian testing.
+package_file_regex: "NessusAgent-{{ cdm_nessus_agent_version }}-debian[0-9]*_{{ architectures[ansible_architecture] }}.{{ format }}"
