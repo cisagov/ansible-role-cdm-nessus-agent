@@ -1,4 +1,11 @@
 ---
+# A dictionary whose keys are values of the Ansible fact
+# ansible_architecture and whose values are processor architecture for
+# which Nessus is to be installed, as specified in the Nessus package
+# filename
+architectures:
+  x86_64: amd64
+
 # The name of the S3 object corresponding to the Nessus Agent system
 # package
-package_object_name: NessusAgent-{{ cdm_nessus_agent_version }}-debian10_{{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' }}.deb
+package_object_name: NessusAgent-{{ cdm_nessus_agent_version }}-debian10_{{ architectures[ansible_architecture] }}.deb
