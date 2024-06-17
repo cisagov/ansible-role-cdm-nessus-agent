@@ -1,6 +1,6 @@
 ---
 - name: Grab Nessus Agent system package GPG key from S3
-  ansible.builtin.aws_s3:
+  amazon.aws.s3_object:
     bucket: "{{ cdm_nessus_agent_third_party_bucket_name }}"
     object: "{{ package_gpg_key_object_name }}"
     dest: /tmp/{{ package_gpg_key_object_name }}
@@ -21,7 +21,7 @@
 - name: Install Nessus Agent (RedHat)
   ansible.builtin.dnf:
     name:
-      - /tmp/{{ package_object_name }}
+      - /tmp/{{ package_file }}
 
 - name: Delete local copy of Nessus Agent system package GPG key
   ansible.builtin.file:

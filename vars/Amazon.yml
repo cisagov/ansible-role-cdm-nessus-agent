@@ -1,8 +1,13 @@
 ---
+# The format/file extension of the Nessus package file (e.g. deb, rpm)
+format: rpm
+
 # The name of the S3 object corresponding to the GPG key for the
 # Nessus Agent system package
 package_gpg_key_object_name: RPM-GPG-KEY-Tenable-4096
 
-# The name of the S3 object corresponding to the Nessus Agent system
-# package
-package_object_name: NessusAgent-{{ cdm_nessus_agent_version }}-amzn2.{{ ansible_architecture }}.rpm
+# A regex that will match the name of the Nessus Agent package file
+# that should be installed.  Note that we force the distribution name
+# here, because what Nessus uses ("amzn") does not match what Ansible
+# uses ("Amazon").
+package_file_regex: "NessusAgent-{{ cdm_nessus_agent_version }}-amzn[0-9]*.{{ ansible_architecture }}.{{ format }}"
