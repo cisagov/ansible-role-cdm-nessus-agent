@@ -169,12 +169,47 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
   test:
+    name: >-
+      test (${{ matrix.scenario }}) -
+      ${{ matrix.platform }}-${{ matrix.architecture }}
     needs:
       - diagnostics
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        architecture:
+          - amd64
+          - arm64
+        exclude:
+          # Nessus Agent does not support ARM64 on Debian.
+          - architecture: arm64
+            platform: debian10-systemd
+          - architecture: arm64
+            platform: debian11-systemd
+          - architecture: arm64
+            platform: debian12-systemd
+          - architecture: arm64
+            platform: debian13-systemd
+          - architecture: arm64
+            platform: kali-systemd
+          # Nessus Agent does not support ARM64 on Fedora.
+          - architecture: arm64
+            platform: fedora39-systemd
+          - architecture: arm64
+            platform: fedora40-systemd
+        platform:
+          - amazonlinux2023-systemd
+          - debian10-systemd
+          - debian11-systemd
+          - debian12-systemd
+          - debian13-systemd
+          - fedora39-systemd
+          - fedora40-systemd
+          - kali-systemd
+          - ubuntu-20-systemd
+          - ubuntu-22-systemd
+          - ubuntu-24-systemd
         scenario:
           - default
     steps:
@@ -205,6 +240,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade --requirement requirements-test.txt
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Assume AWS test role
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -214,7 +253,10 @@ jobs:
           role-to-assume: ${{ secrets.TEST_ROLE_TO_ASSUME }}
           role-duration-seconds: 3600
       - name: Run molecule tests
-        run: molecule test --scenario-name ${{ matrix.scenario }}
+        run: >-
+          molecule test
+          --platform-name ${{ matrix.platform }}-${{ matrix.architecture }}
+          --scenario-name ${{ matrix.scenario }}
       - name: Setup tmate debug session
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
