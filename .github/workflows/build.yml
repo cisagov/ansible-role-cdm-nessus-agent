@@ -202,6 +202,8 @@ jobs:
             platform: fedora39-systemd
           - architecture: arm64
             platform: fedora40-systemd
+          - architecture: arm64
+            platform: fedora41-systemd
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
