@@ -1,4 +1,13 @@
 ---
+# The gnupg package is not installed by default on the Fedora 41
+# Docker image we use for Molecule testing.
+- name: Install gnupg
+  ansible.builtin.package:
+    name:
+      - gnupg
+  when:
+    - ansible_distribution == "Fedora"
+
 - name: Grab Nessus Agent system package GPG key from S3
   amazon.aws.s3_object:
     bucket: "{{ cdm_nessus_agent_third_party_bucket_name }}"
