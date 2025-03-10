@@ -2,8 +2,5 @@
 # The directory where Nessus Agent is installed
 cdm_nessus_agent_install_directory: /opt/nessus_agent
 
-# The name of the AWS S3 bucket where third-party software is located
-cdm_nessus_agent_third_party_bucket_name: cisa-cool-third-party-production
-
 # The version of Nessus Agent to install
 cdm_nessus_agent_version: 10.7.3
