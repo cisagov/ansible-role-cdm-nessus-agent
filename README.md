@@ -124,9 +124,9 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| cdm_nessus_agent_install_directory | The directory where Nessus Agent is installed. | `/opt/nessus_agent` | No |
-| cdm_nessus_agent_third_party_bucket_name | The name of the AWS S3 bucket where third-party software is located. | n/a | Yes |
-| cdm_nessus_agent_version | The version of Nessus Agent to install. | `10.7.3` | No |
+| cdm\_nessus\_agent\_install\_directory | The directory where Nessus Agent is installed. | `/opt/nessus_agent` | No |
+| cdm\_nessus\_agent\_third\_party\_bucket\_name | The name of the AWS S3 bucket where third-party software is located. | n/a | Yes |
+| cdm\_nessus\_agent\_version | The version of Nessus Agent to install. | `10.7.3` | No |
 
 ## Dependencies ##
 
