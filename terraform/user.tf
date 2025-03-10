@@ -1,54 +1,29 @@
-# Create the test user.  We do not require SSM Parameter Store access
-# for this role, so we can simply use cisagov/ci-iam-user-tf-module
-# instead of cisagov/molecule-iam-user-tf-module.
+# Create the test user
 module "user" {
-  source = "github.com/cisagov/ci-iam-user-tf-module"
+  source = "github.com/cisagov/molecule-iam-user-tf-module"
 
   providers = {
-    aws            = aws.users
-    aws.production = aws.images_production_provisionaccount
-    aws.staging    = aws.images_staging_provisionaccount
+    aws                         = aws.users
+    aws.images-provisionaccount = aws.images_provisionaccount
+    aws.images-ssm              = aws.images_ssm
   }
 
-  role_description = "A role that can be assumed to allow for CI testing of ansible-role-cdm-nessus-agent via Molecule."
-  role_name        = "Test-ansible-role-cdm-nessus-agent"
-  user_name        = "test-ansible-role-cdm-nessus-agent"
+  entity = "ansible-role-cdm-nessus-agent"
 }
 
-# Attach third-party S3 bucket read-only policy to the production
-# role used by the test user
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread_production" {
-  provider = aws.images_production_provisionaccount
+# Attach third-party S3 bucket read-only policy to the test user role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread" {
+  provider = aws.images_provisionaccount
 
-  policy_arn = module.production_bucket_access.policy.arn
-  role       = module.user.production_role.name
+  policy_arn = module.bucket_access.policy.arn
+  role       = module.user.role.name
 }
 
-# Attach third-party S3 bucket read-only policy to the staging
-# role used by the test user
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread_staging" {
-  provider = aws.images_staging_provisionaccount
+# Attach third-party S3 bucket read-only policy from
+# cisagov/ansible-role-cdm-certificates to the test user role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
+  provider = aws.images_provisionaccount
 
-  policy_arn = module.staging_bucket_access.policy.arn
-  role       = module.user.staging_role.name
-}
-
-# Attach 3rd party S3 bucket read-only policy from
-# cisagov/ansible-role-cdm-certificates to the production role used by
-# the test user
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates_production" {
-  provider = aws.images_production_provisionaccount
-
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.production_bucket_policy.arn
-  role       = module.user.production_role.name
-}
-
-# Attach 3rd party S3 bucket read-only policy from
-# cisagov/ansible-role-cdm-certificates to the staging role used by
-# the test user
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates_staging" {
-  provider = aws.images_staging_provisionaccount
-
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.staging_bucket_policy.arn
-  role       = module.user.staging_role.name
+  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.bucket_access_policy.arn
+  role       = module.user.role.name
 }
