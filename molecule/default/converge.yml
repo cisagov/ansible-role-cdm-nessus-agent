@@ -5,3 +5,5 @@
     - name: Include ansible-role-cdm-nessus-agent
       ansible.builtin.include_role:
         name: ansible-role-cdm-nessus-agent
+      vars:
+        cdm_nessus_agent_third_party_bucket_name: "{{ lookup('env', 'THIRD_PARTY_BUCKET') }}"
