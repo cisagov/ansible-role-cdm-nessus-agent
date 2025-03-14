@@ -16,14 +16,6 @@ module "user" {
   # ssm_parameters = ["/third_party_bucket_name"]
 }
 
-# Attach third-party S3 bucket read-only policy to the test user role
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread" {
-  provider = aws.images_provisionaccount
-
-  policy_arn = module.bucket_access.policy.arn
-  role       = module.user.role.name
-}
-
 # Attach third-party S3 bucket read-only policy from
 # cisagov/ansible-role-cdm-certificates to the test user role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
