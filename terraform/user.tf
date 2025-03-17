@@ -19,9 +19,4 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
 
   policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.bucket_access_policy.arn
   role       = module.user.role.name
-  # If necessary, provide a list of SSM Parameter Store parameters that the test user needs to
-  # be able to read.  In particular, roles that require access to
-  # resources inside the third-party bucket will likely need to access the
-  # name of that bucket via such a parameter.
-  # ssm_parameters = ["/third_party_bucket_name"]
 }
