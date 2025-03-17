@@ -8,15 +8,8 @@ module "user" {
     aws.images-ssm              = aws.images_ssm
   }
 
-  entity = "ansible-role-cdm-nessus-agent"
-}
-
-# Attach third-party S3 bucket read-only policy to the test user role
-resource "aws_iam_role_policy_attachment" "thirdpartybucketread" {
-  provider = aws.images_provisionaccount
-
-  policy_arn = module.bucket_access.policy.arn
-  role       = module.user.role.name
+  entity         = "ansible-role-cdm-nessus-agent"
+  ssm_parameters = ["/third_party_bucket_name"]
 }
 
 # Attach third-party S3 bucket read-only policy from

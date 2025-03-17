@@ -12,3 +12,11 @@ module "bucket_access" {
   s3_bucket   = var.nessus_agent_bucket
   s3_objects  = var.nessus_agent_objects
 }
+
+# Attach third-party S3 bucket read-only policy to the test user role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread" {
+  provider = aws.images_provisionaccount
+
+  policy_arn = module.bucket_access.policy.arn
+  role       = module.user.role.name
+}
