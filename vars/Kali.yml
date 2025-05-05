@@ -13,4 +13,6 @@ format: deb
 # A regex that will match the name of the Nessus Agent package file
 # that should be installed.  Note that we force the use of the Debian
 # packages for Kali, since it is based on Debian testing.
-package_file_regex: "NessusAgent-{{ cdm_nessus_agent_version }}-debian[0-9]*_{{ architectures[ansible_architecture] }}.{{ format }}"
+package_file_regex: >-
+  NessusAgent-{{ cdm_nessus_agent_version }}-debian[0-9]*_{{
+  architectures[ansible_architecture] }}.{{ format }}

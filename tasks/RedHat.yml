@@ -20,7 +20,7 @@
 - name: Copy the Nessus Agent system package GPG key
   ansible.builtin.copy:
     dest: /tmp/{{ package_gpg_key_object_name }}
-    mode: 0700
+    mode: u=rwx,g=,o=
     src: /tmp/{{ package_gpg_key_object_name }}
 
 - name: Import Nessus Agent system package GPG key
