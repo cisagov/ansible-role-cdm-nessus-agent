@@ -10,4 +10,4 @@ package_gpg_key_object_name: RPM-GPG-KEY-Tenable-4096
 # that should be installed.  Note that we force the distribution name
 # here, because what Nessus uses ("amzn") does not match what Ansible
 # uses ("Amazon").
-package_file_regex: "NessusAgent-{{ cdm_nessus_agent_version }}-amzn[0-9]*.{{ ansible_architecture }}.{{ format }}"
+package_file_regex: NessusAgent-{{ cdm_nessus_agent_version }}-amzn[0-9]*.{{ ansible_architecture }}.{{ format }}
