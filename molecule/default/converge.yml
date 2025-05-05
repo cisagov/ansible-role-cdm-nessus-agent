@@ -6,4 +6,5 @@
       ansible.builtin.include_role:
         name: ansible-role-cdm-nessus-agent
       vars:
-        cdm_nessus_agent_third_party_bucket_name: "{{ lookup('aws_ssm', '/third_party_bucket_name') }}"
+        cdm_nessus_agent_third_party_bucket_name: >-
+          {{ lookup('aws_ssm', '/third_party_bucket_name') }}

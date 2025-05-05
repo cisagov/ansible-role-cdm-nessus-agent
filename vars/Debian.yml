@@ -12,4 +12,7 @@ format: deb
 
 # A regex that will match the name of the Nessus Agent package file
 # that should be installed
-package_file_regex: NessusAgent-{{ cdm_nessus_agent_version }}-{{ ansible_distribution | lower }}[0-9]*_{{ architectures[ansible_architecture] }}.{{ format }}
+package_file_regex: >-
+  NessusAgent-{{ cdm_nessus_agent_version }}-{{
+  ansible_distribution | lower }}[0-9]*_{{
+  architectures[ansible_architecture] }}.{{ format }}
