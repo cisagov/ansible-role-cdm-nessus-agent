@@ -10,6 +10,8 @@ collections:
 roles:
   - name: cdm_certificates
     src: https://github.com/cisagov/ansible-role-cdm-certificates
+  - name: debian_archive
+    src: https://github.com/cisagov/ansible-role-debian-archive
   - name: dhs_certificates
     src: https://github.com/cisagov/ansible-role-dhs-certificates
   - name: upgrade
