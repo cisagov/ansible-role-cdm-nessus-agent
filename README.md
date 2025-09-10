@@ -130,8 +130,7 @@ None.
 
 ## Dependencies ##
 
-- [cisagov/ansible-role-dhs-certificates](https://github.com/cisagov/ansible-role-dhs-certificates)
-- [cisagov/ansible-role-cdm-certificates](https://github.com/cisagov/ansible-role-cdm-certificates)
+None.
 
 ## Installation ##
 
