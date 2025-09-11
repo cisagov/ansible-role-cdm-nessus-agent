@@ -4,5 +4,4 @@
 # be specified here.
 #
 # See also cisagov/skeleton-ansible-role#153.
-- name: cdm_certificates
-  src: https://github.com/cisagov/ansible-role-cdm-certificates
+[]
