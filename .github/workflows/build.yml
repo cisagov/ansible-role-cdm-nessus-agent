@@ -230,6 +230,8 @@ jobs:
           - architecture: arm64
             platform: debian13-systemd
           - architecture: arm64
+            platform: debian14-systemd
+          - architecture: arm64
             platform: kali-systemd
           # Nessus Agent does not support ARM64 on Fedora.
           - architecture: arm64
