@@ -101,7 +101,7 @@ jobs:
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
       - id: setup-env
         uses: cisagov/setup-env-github-action@v1
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: setup-python
         uses: actions/setup-python@v6
         with:
@@ -235,9 +235,9 @@ jobs:
             platform: kali-systemd
           # Nessus Agent does not support ARM64 on Fedora.
           - architecture: arm64
-            platform: fedora41-systemd
-          - architecture: arm64
             platform: fedora42-systemd
+          - architecture: arm64
+            platform: fedora43-systemd
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
@@ -245,8 +245,8 @@ jobs:
           - debian12-systemd
           - debian13-systemd
           - debian14-systemd
-          - fedora41-systemd
           - fedora42-systemd
+          - fedora43-systemd
           - kali-systemd
           - ubuntu-22-systemd
           - ubuntu-24-systemd
@@ -281,7 +281,7 @@ jobs:
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
       - id: setup-env
         uses: cisagov/setup-env-github-action@v1
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: setup-python
         uses: actions/setup-python@v6
         with:

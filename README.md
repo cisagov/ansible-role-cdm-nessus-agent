@@ -1,6 +1,7 @@
 # ansible-role-cdm-nessus-agent #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-cdm-nessus-agent/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-cdm-nessus-agent/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-cdm-nessus-agent)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-cdm-nessus-agent/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-cdm-nessus-agent/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role for installing [Nessus
